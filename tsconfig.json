@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		"module": "NodeNext",
+		"target": "ESNext",
+		"lib": ["ESNext", "DOM"],
+		"alwaysStrict": true,
+		"strictNullChecks": true,
+		"moduleResolution": "NodeNext",
+		"allowJs": true,
+		"checkJs": false,
+		"rootDir": "in",
+		"outDir": "out",
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
+		// "types": ["node"],
+		"noImplicitAny": true,
+		"noUncheckedIndexedAccess": true,
+		"useUnknownInCatchVariables": true,
+		"strictBindCallApply": true,
+		"pretty": true,
+		"strictFunctionTypes": true,
+		"strictPropertyInitialization": true
+	},
+	"exclude": ["out", "node_modules"]
+}
