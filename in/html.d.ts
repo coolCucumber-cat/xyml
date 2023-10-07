@@ -1,4 +1,4 @@
-interface HtmlElementTagNameMap {
+interface HtmlElementNameMap {
 	a: HtmlAnchor
 	abbr: HtmlElement
 	address: HtmlElement
