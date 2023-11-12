@@ -1,4 +1,4 @@
-interface HtmlElementNameMap {
+export interface HtmlElementNameMap {
 	a: HtmlAnchor
 	abbr: HtmlElement
 	address: HtmlElement
@@ -111,13 +111,32 @@ interface HtmlElementNameMap {
 	wbr: HtmlElement
 }
 
-type HtmlElementTypeFrom<T> = {
-	[K in keyof T]?: PrimitivePlusString<T[K]> | undefined
+type HtmlElementTypeFrom<
+	Attributes,
+	UpdateAttributes extends Partial<Record<keyof Attributes, any>> = {},
+	RemoveAttributes extends keyof Attributes = never
+> = {
+	[K in keyof Attributes as Exclude<
+		K,
+		RemoveAttributes
+	>]?: PrimitivePlusString<
+		K extends keyof UpdateAttributes ? UpdateAttributes[K] : Attributes[K]
+	>
 }
 
-type PrimitivePlusString<T> = T extends boolean | number ? T | `${T}` : T
+type Test1 = HtmlElementTypeFrom<
+	{ a: string; b: number; c: boolean },
+	{ a: number },
+	'b'
+>
 
-type Data = { [key: string]: string | boolean | number | undefined }
+type PrimitivePlusString<T> = T extends boolean | number
+	? T | `${T}`
+	: T extends ''
+	? null | ''
+	: T
+
+type Data = { [key: string]: string | boolean | number | null | undefined }
 type Class =
 	| string
 	| (string | { [key: string]: boolean })[]
